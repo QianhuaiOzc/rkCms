@@ -18,7 +18,7 @@ import org.nutz.dao.entity.annotation.Table;
  * 
  */
 @Table("t_navModel")
-public class NavModel implements Serializable{
+public class NavModel implements Serializable {
 	/**
 	 * 
 	 */
@@ -36,25 +36,25 @@ public class NavModel implements Serializable{
 	/*
 	 * 父级导航，不存在则为空
 	 */
-	@One(target=NavModel.class,field="pid")
+	@One(target = NavModel.class, field = "pid")
 	private NavModel parent;
 	/*
 	 * 记录外键关系
 	 */
 	@Column
 	private int pid;
-	
+
 	/*
 	 * 列表显示风格
 	 */
-	@One(target=Templete.class,field="tid")
+	@One(target = Templete.class, field = "tid")
 	private Templete template;
 	/*
 	 * 记录外键关系
 	 */
 	@Column
-	private int tid; 
-	
+	private int tid;
+
 	/*
 	 * 排序号码
 	 */
@@ -68,20 +68,20 @@ public class NavModel implements Serializable{
 	/*
 	 * 所有该导航的子导航
 	 */
-	@Many(target=NavModel.class,field="pid")
+	@Many(target = NavModel.class, field = "pid")
 	private List<NavModel> children;
-	
+
 	/*
-	 *设置是否为首页 
+	 * 设置是否为首页
 	 */
 	@Column
 	private boolean indexNav;
 	/*
-	 * 是否显示导航
-	 * true 不显示
+	 * 是否显示导航 true 不显示
 	 */
 	@Column
 	private boolean showNav;
+
 	/**
 	 * 获得深度
 	 * 
@@ -96,7 +96,7 @@ public class NavModel implements Serializable{
 		}
 		return deep;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -150,23 +150,22 @@ public class NavModel implements Serializable{
 	}
 
 	public void setChildren(List<NavModel> children) {
-		
-		if(children!=null&&children.size()>0){
-			//把List进行排序处理
+
+		if (children != null && children.size() > 0) {
+			// 把List进行排序处理
 			Collections.sort(children, new Comparator<NavModel>() {
 
-				@Override
 				public int compare(NavModel o1, NavModel o2) {
-					
-					if(o1.getSortNumber()==o2.getSortNumber()){
+
+					if (o1.getSortNumber() == o2.getSortNumber()) {
 						return 0;
 					}
-					if(o1.getSortNumber()>o2.getSortNumber()){
+					if (o1.getSortNumber() > o2.getSortNumber()) {
 						return -1;
 					}
-					return 1 ;
+					return 1;
 				}
-			
+
 			});
 		}
 		this.children = children;
@@ -203,6 +202,7 @@ public class NavModel implements Serializable{
 	public void setShowNav(boolean showNav) {
 		this.showNav = showNav;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -222,6 +222,7 @@ public class NavModel implements Serializable{
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

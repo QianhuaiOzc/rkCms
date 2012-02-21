@@ -12,7 +12,6 @@ import org.nutz.mvc.ViewMaker;
 public class JPEGViewMaker implements ViewMaker {
 	private static final Log log = Logs.getLog(JPEGViewMaker.class);
 
-	@Override
 	public View make(Ioc ioc, String type, String value) {
 		log.debugf("Type:%s,Value:%s", type, value);
 		if ("jpg".equalsIgnoreCase(type)) {
