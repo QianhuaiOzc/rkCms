@@ -5,7 +5,7 @@ package com.rekoe.cms;
  * cd D:\MongoDB
 　　> mongod --dbpath D:\MongoDB\data 
 
-
+git@github.com:Rekoe/rkCms.git
  */
 import org.nutz.extras.mvc.init.MyUrlMappingImpl;
 import org.nutz.mvc.annotation.By;
